@@ -78,7 +78,7 @@ export const createForm = (method = 'GET', className = '') => {
 
 export const createLabel = (title,id) => {
     const el = document.createElement('label')
-    el.for = id
+    el.htmlFor = id
     el.innerText = title
     el.className = 'mr-4 w-[120px] inline-block'
     return el

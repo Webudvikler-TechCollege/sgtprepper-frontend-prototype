@@ -4,6 +4,7 @@ import renderProductPage from "../views/pages/productPage.js";
 
 export const productController = async (product) => {
   const data = await getProduct(product);
+console.log(data);
 
   const formattedData = {
     ...data,

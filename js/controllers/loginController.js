@@ -1,7 +1,7 @@
 import { Authenticate } from "../models/loginModel.js";
 import { isLoggedIn, logout } from "../utils/auth.js";
 import { setCookie } from "../utils/cookies.js";
-import { createloginButton } from "../views/components/molecules/loginButton.js";
+import { createLoginButton } from "../views/components/molecules/loginButton.js";
 import renderLoginPage from "../views/pages/loginPage.js";
 
 export const loginController = () => {
@@ -60,5 +60,5 @@ export const renderLoginButton = async () => {
     }
   }
   
-  return createloginButton(loggedIn, handleClick)
+  return createLoginButton(loggedIn, handleClick)
 }
