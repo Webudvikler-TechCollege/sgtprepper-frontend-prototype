@@ -1,7 +1,6 @@
 import { homeController } from "../controllers/homeController.js";
 import { loginController } from "../controllers/loginController.js";
-import { productController } from "../controllers/productController.js";
-import { productsController } from "../controllers/productsController.js";
+import { renderProductDetails, renderProductList } from "../controllers/productController.js";
 import { clearElement } from "../utils/dom.js";
 
 export function initRouter() {
@@ -24,10 +23,10 @@ function handleRoute() {
     // ["products"]
     if (segments[0] === "products") {
         if (segments.length === 2) {
-            productsController(segments[1]);
+            renderProductList(segments[1]);
             return;
         } else {
-            productController(segments[2]);
+            renderProductDetails(segments[2]);
             return;
         }
     }

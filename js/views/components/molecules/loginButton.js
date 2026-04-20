@@ -1,10 +1,10 @@
 import { createButton } from "../atoms/index.js";
 
 // Opretter en login/logout knap baseret på login-status
-export const createLoginButton = (loggedIn, onClick, className = '') => {
+export const createLoginButton = (buttonTxt, onClick, className = '') => {
     // Opretter knap med korrekt tekst
     const button = createButton(
-        loggedIn ? 'Logout' : 'Login',
+        buttonTxt,
         'button', // Sørger for at knappen ikke submitter en form
         className
     );

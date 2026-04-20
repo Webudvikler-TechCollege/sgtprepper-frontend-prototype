@@ -21,18 +21,6 @@ export const handleLogin = async (e) => {
   const username = form.username.value.trim()
   const password = form.password.value
 
-  console.log(username, password.length);
-  
-  // Tjek om felterne er udfyldt korrekt
-  /*
-  if (!username) {
-    form.username.setCustomValidity("Skriv dit brugernavn")
-  }
-  if (password.length < 8) {
-    form.password.setCustomValidity("Adgangskoden skal være mindst 8 tegn")
-  }
-  if (!form.reportValidity()) return
-  */
   try {
     // Send login-anmodning til serveren
     const data = await Authenticate(username, password)    
@@ -50,6 +38,7 @@ export const handleLogin = async (e) => {
 // Login/Logout-knap til header
 export const renderLoginButton = async () => {
   const loggedIn = await isLoggedIn()
+  let buttonTxt = loggedIn ? 'Log out' : 'Log in'
 
   const handleClick = () => {
     if(loggedIn) {
@@ -60,5 +49,5 @@ export const renderLoginButton = async () => {
     }
   }
   
-  return createLoginButton(loggedIn, handleClick)
+  return createLoginButton(buttonTxt, handleClick)
 }

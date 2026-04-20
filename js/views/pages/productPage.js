@@ -1,8 +1,11 @@
-import { createArticle, createDiv, createHeading, createImage, createParagraph } from "../components/atoms/index.js";
+import { createArticle, createButton, createDiv, createHeading, createImage, createInput, createParagraph } from "../components/atoms/index.js";
+import { createFormGroup } from "../components/molecules/formGroup.js";
 import { createMainWrapper } from "../components/molecules/mainWrapper.js";
 
 const renderProductPage = (product) => {    
-    const { name, imageUrl, description, price, stockClass, stockText } = product
+    const { name, imageUrl, description, price, stockClass, stockText, formElement } = product
+    console.log(formElement);
+    
     const root = document.querySelector("#root");
     const view = createMainWrapper(name)
     
@@ -13,17 +16,18 @@ const renderProductPage = (product) => {
     
     const div = createDiv('min-w-0')
 
-    const p1 = createParagraph(description, 'mb-2', true)
-    div.append(p1)
+    const pDesc = createParagraph(description, 'mb-2', true)
+    div.append(pDesc)
 
-    const p2 = createParagraph(stockText, stockClass)    
-    div.append(p2)
+    const pStock = createParagraph(stockText, stockClass)    
+    div.append(pStock)
 
-    const p3 = createParagraph(`Pris: ${price}`, 'font-bold text-xl')
-    div.append(p3)
+    const pPrice = createParagraph(`Pris: ${price}`, 'font-bold text-xl')
+    div.append(pPrice)
 
-    const p4 = createParagraph()    
-    div.append(p4)
+    const pAdd2Cart = createParagraph('', 'pt-4')
+    pAdd2Cart.append(formElement)
+    div.append(pAdd2Cart)
 
     article.append(div)
     view.append(article)

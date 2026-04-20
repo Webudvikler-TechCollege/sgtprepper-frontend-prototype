@@ -90,7 +90,7 @@ export const createInput = (type, name, placeholder, value = '', className = '')
   el.name = name
   el.autocomplete = true
   el.placeholder = placeholder || ''
-  el.value = value
+  el.defaultValue = value
   el.className = className || 'border border-gray-300 rounded px-3 py-2 w-[400px]]'
   return el
 }
