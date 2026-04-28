@@ -3,7 +3,6 @@ import { createDiv, createHeading, createImage, createLink, createParagraph } fr
 import { createMainWrapper } from "../components/molecules/mainWrapper.js";
 
 const renderProductsPage = (products, category) => {
-    const root = document.querySelector("#root");
     const view = createMainWrapper('Produkter')
     
     products.map(item => {
@@ -36,7 +35,7 @@ const renderProductsPage = (products, category) => {
         view.append(productCard)
     })
 
-    root.append(view)
+    return view
 }
 
 export default renderProductsPage

@@ -1,5 +1,7 @@
-import renderFooter from "../views/partials/footerView.js";
+import { render } from "../utils/dom.js";
+import createFooter from "../views/partials/footerView.js";
 
-export const footerController = async () => {
-  renderFooter();
+export const footerController = () => {
+  const footerHtml = createFooter()
+  render('footer', footerHtml)
 };

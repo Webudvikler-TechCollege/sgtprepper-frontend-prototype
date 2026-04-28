@@ -1,7 +1,9 @@
-/**
- * Empty html element
+ /**
+ * 
+ * @param {*} el 
  */
-export const clearElement = id => {
-    const element = document.querySelector(`#${id}`)
-    element.innerHTML = ''
+export const render = (targetId, htmlElement, clearTarget = false) => {
+    const el = document.getElementById(targetId)
+    if(clearTarget) el.innerHTML = ''
+    el.append(htmlElement)
 }

@@ -6,6 +6,12 @@ export const createDiv = (className = '') => {
   return el;
 };
 
+export const createSpan = (className = '') => {
+  const el = document.createElement('span');
+  el.className = className;
+  return el;
+};
+
 export const createSection = (className = '') => {
   const el = document.createElement('section');
   el.className = className;
@@ -95,8 +101,9 @@ export const createInput = (type, name, placeholder, value = '', className = '')
   return el
 }
 
-export const createButton = (title, type = 'submit', className = 'text-white text-base border border-slate-400 px-2 py-1 rounded-md bg-slate-500 hover:bg-slate-800 inset-shadow-sm') => {
+export const createButton = (title, type = 'submit', className = 'text-white text-base border border-slate-400 px-2 py-1 rounded-md bg-slate-500 hover:bg-slate-800 inset-shadow-sm mr-2') => {
     const el = document.createElement('button')
+    el.type = type
     el.className = className
     el.textContent = title
     return el

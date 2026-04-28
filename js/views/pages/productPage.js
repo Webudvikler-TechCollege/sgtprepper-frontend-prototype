@@ -4,9 +4,7 @@ import { createMainWrapper } from "../components/molecules/mainWrapper.js";
 
 const renderProductPage = (product) => {    
     const { name, imageUrl, description, price, stockClass, stockText, formElement } = product
-    console.log(formElement);
     
-    const root = document.querySelector("#root");
     const view = createMainWrapper(name)
     
     const article = createArticle('flex justify-between gap-4 p-4 border rounded-lg mb-4 shadow-md')
@@ -31,7 +29,7 @@ const renderProductPage = (product) => {
 
     article.append(div)
     view.append(article)
-    root.append(view)
+    return view
 }
 
 export default renderProductPage

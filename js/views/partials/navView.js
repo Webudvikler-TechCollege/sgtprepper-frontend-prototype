@@ -1,7 +1,6 @@
 import { createLi, createLink, createUl } from "../components/atoms/index.js"
 
-const renderNav = async data => {
-    const nav = document.querySelector('#nav')
+const createNav = async data => {
     const ul = createUl('flex')
     
     data.map(item => {
@@ -11,8 +10,7 @@ const renderNav = async data => {
         li.append(a)
         ul.append(li)
     })    
-    nav.append(ul)
-
+    return ul
 }
 
-export default renderNav
+export default createNav

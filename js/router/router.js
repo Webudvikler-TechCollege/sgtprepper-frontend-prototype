@@ -1,7 +1,7 @@
+import { cartController } from "../controllers/cartController.js";
 import { homeController } from "../controllers/homeController.js";
 import { loginController } from "../controllers/loginController.js";
 import { renderProductDetails, renderProductList } from "../controllers/productController.js";
-import { clearElement } from "../utils/dom.js";
 
 export function initRouter() {
     window.addEventListener("hashchange", handleRoute);
@@ -9,7 +9,6 @@ export function initRouter() {
 }
 
 function handleRoute() {
-    clearElement('root')
 
     const hash = window.location.hash || "#/";
     const cleanHash = hash.replace(/^#\/?/, "")
@@ -34,6 +33,12 @@ function handleRoute() {
     // ["login"]
     if (segments[0] === "login") {
         loginController();
+        return;
+    }
+
+    // ["cart"]
+    if (segments[0] === "cart") {
+        cartController();
         return;
     }
 

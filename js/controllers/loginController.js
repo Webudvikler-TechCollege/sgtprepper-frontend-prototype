@@ -1,11 +1,22 @@
 import { Authenticate } from "../models/loginModel.js";
 import { isLoggedIn, logout } from "../utils/auth.js";
 import { setCookie } from "../utils/cookies.js";
+import { render } from "../utils/dom.js";
+import { getToken } from "../utils/token.js";
 import { createLoginButton } from "../views/components/molecules/loginButton.js";
-import renderLoginPage from "../views/pages/loginPage.js";
+import renderLoginFormPage from "../views/pages/loginFormPage.js";
+import renderLoginInfoPage from "../views/pages/logininfoPage.js";
 
-export const loginController = () => {
-  renderLoginPage();
+export const loginController = async () => {
+  let loginHtml;
+  if(await isLoggedIn()) {
+    const strToken = await getToken()
+    const { user } = strToken    
+    loginHtml = renderLoginInfoPage(user, renderLoginButton)
+  } else {
+    loginHtml = renderLoginFormPage()
+  }
+  render('root', loginHtml, true)
 }
 
 export const handleLogin = async (e) => {
@@ -28,7 +39,7 @@ export const handleLogin = async (e) => {
     // Hvis login lykkedes, gem token og gå til forsiden
     if(data.accessToken) {
       setCookie('sgtprepper_token', JSON.stringify(data))
-      location.href = '/index.htm'
+      window.location.reload()
     }
   } catch (error) {
     console.error(error)
@@ -40,7 +51,7 @@ export const renderLoginButton = async () => {
   const loggedIn = await isLoggedIn()
   let buttonTxt = loggedIn ? 'Log out' : 'Log in'
 
-  const handleClick = () => {
+  const handleClick = () => {    
     if(loggedIn) {
       logout()
       location.reload()

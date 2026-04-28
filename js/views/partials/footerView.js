@@ -1,10 +1,8 @@
 import { createParagraph } from "../components/atoms/index.js"
 
-const renderFooter = async () => {
-    const footer = document.querySelector('#footer')
-
+const createFooter = () => {
     const p = createParagraph('TechCollege')
-    footer.append(p)
+    return p
 }
 
-export default renderFooter
+export default createFooter
